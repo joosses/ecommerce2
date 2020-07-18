@@ -25,14 +25,14 @@ function OrderScreen(props) {
   const orderDetails = useSelector(state => state.orderDetails);
   const { loading, order, error } = orderDetails;
 
-  return loading ? <div>Loading ...</div> : error ? <div>{error}</div> :
+  return loading ? <div>Cargando ...</div> : error ? <div>{error}</div> :
 
     <div>
       <div className="placeorder">
         <div className="placeorder-info">
           <div>
             <h3>
-              Shipping
+              Comprando
           </h3>
             <div>
               {order.shipping.address}, {order.shipping.city},
@@ -43,9 +43,9 @@ function OrderScreen(props) {
             </div>
           </div>
           <div>
-            <h3>Payment</h3>
+            <h3>Pago</h3>
             <div>
-              Payment Method: {order.payment.paymentMethod}
+              Metodo de Pago: {order.payment.paymentMethod}
             </div>
             <div>
               {order.isPaid ? "Paid at " + order.paidAt : "Not Paid."}
@@ -55,16 +55,16 @@ function OrderScreen(props) {
             <ul className="cart-list-container">
               <li>
                 <h3>
-                  Shopping Cart
+                  Carro de Compras
           </h3>
                 <div>
-                  Price
+                  Precio
           </div>
               </li>
               {
                 order.orderItems.length === 0 ?
                   <div>
-                    Cart is empty
+                    El Carro esta vacio
           </div>
                   :
                   order.orderItems.map(item =>
@@ -97,7 +97,7 @@ function OrderScreen(props) {
         <div className="placeorder-action">
           <ul>
             <li className="placeorder-actions-payment">
-              {loadingPay && <div>Finishing Payment...</div>}
+              {loadingPay && <div>Finalizando el Pago...</div>}
               {!order.isPaid &&
                 <PaypalButton
                   amount={order.totalPrice}
@@ -105,14 +105,14 @@ function OrderScreen(props) {
               }
             </li>
             <li>
-              <h3>Order Summary</h3>
+              <h3>Resumen de la Orden</h3>
             </li>
             <li>
               <div>Items</div>
               <div>${order.itemsPrice}</div>
             </li>
             <li>
-              <div>Shipping</div>
+              <div>Compras</div>
               <div>${order.shippingPrice}</div>
             </li>
             <li>
@@ -120,7 +120,7 @@ function OrderScreen(props) {
               <div>${order.taxPrice}</div>
             </li>
             <li>
-              <div>Order Total</div>
+              <div>Orden Total</div>
               <div>${order.totalPrice}</div>
             </li>
           </ul>

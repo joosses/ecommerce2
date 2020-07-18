@@ -32,13 +32,13 @@ function CartScreen(props) {
             Shopping Cart
           </h3>
           <div>
-            Price
+            Precio
           </div>
         </li>
         {
           cartItems.length === 0 ?
             <div>
-              Cart is empty
+              Carto esta vacio
           </div>
             :
             cartItems.map(item =>
@@ -61,7 +61,7 @@ function CartScreen(props) {
                       )}
                     </select>
                     <button type="button" className="button" onClick={() => removeFromCartHandler(item.product)} >
-                      Delete
+                      Eliminar
                     </button>
                   </div>
                 </div>
@@ -81,7 +81,7 @@ function CartScreen(props) {
          $ {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
       </h3>
       <button onClick={checkoutHandler} className="button primary full-width" disabled={cartItems.length === 0}>
-        Proceed to Checkout
+        Procesando el Checkout
       </button>
 
     </div>

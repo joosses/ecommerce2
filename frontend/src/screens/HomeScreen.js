@@ -40,11 +40,11 @@ function HomeScreen(props) {
               name="searchKeyword"
               onChange={(e) => setSearchKeyword(e.target.value)}
             />
-            <button type="submit">Search</button>
+            <button type="submit">Buscar</button>
           </form>
         </li>
         <li>
-          Sort By{' '}
+          Ordenar por{' '}
           <select name="sortOrder" onChange={sortHandler}>
             <option value="">Newest</option>
             <option value="lowest">Lowest</option>
@@ -53,7 +53,7 @@ function HomeScreen(props) {
         </li>
       </ul>
       {loading ? (
-        <div>Loading...</div>
+        <div>Cargando...</div>
       ) : error ? (
         <div>{error}</div>
       ) : (

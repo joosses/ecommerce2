@@ -38,7 +38,7 @@ router.post('/signin', async (req, res) => {
       token: getToken(signinUser),
     });
   } else {
-    res.status(401).send({ message: 'Invalid Email or Password.' });
+    res.status(401).send({ message: 'Invalido tu Email o Password.' });
   }
 });
 
@@ -58,7 +58,7 @@ router.post('/register', async (req, res) => {
       token: getToken(newUser),
     });
   } else {
-    res.status(401).send({ message: 'Invalid User Data.' });
+    res.status(401).send({ message: 'Invalida la informacion del usuario.' });
   }
 });
 

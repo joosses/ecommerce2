@@ -42,7 +42,7 @@ function PlaceOrderScreen(props) {
       <div className="placeorder-info">
         <div>
           <h3>
-            Shipping
+            Compra
           </h3>
           <div>
             {cart.shipping.address}, {cart.shipping.city},
@@ -50,25 +50,25 @@ function PlaceOrderScreen(props) {
           </div>
         </div>
         <div>
-          <h3>Payment</h3>
+          <h3>Pago</h3>
           <div>
-            Payment Method: {cart.payment.paymentMethod}
+            Metodo de pago: {cart.payment.paymentMethod}
           </div>
         </div>
         <div>
           <ul className="cart-list-container">
             <li>
               <h3>
-                Shopping Cart
+                Carro de compra
           </h3>
               <div>
-                Price
+                Precio
           </div>
             </li>
             {
               cartItems.length === 0 ?
                 <div>
-                  Cart is empty
+                  Carro vacio
           </div>
                 :
                 cartItems.map(item =>
@@ -104,14 +104,14 @@ function PlaceOrderScreen(props) {
             <button className="button primary full-width" onClick={placeOrderHandler} >Place Order</button>
           </li>
           <li>
-            <h3>Order Summary</h3>
+            <h3>Resumen de la orden</h3>
           </li>
           <li>
             <div>Items</div>
             <div>${itemsPrice}</div>
           </li>
           <li>
-            <div>Shipping</div>
+            <div>Compra</div>
             <div>${shippingPrice}</div>
           </li>
           <li>
