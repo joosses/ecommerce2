@@ -1,5 +1,6 @@
 import express from 'express';
 import Product from '../models/productModel';
+import { upload } from "./uploadRoute"
 import { isAuth, isAdmin } from '../util';
 
 const router = express.Router();
@@ -35,6 +36,8 @@ router.get('/:id', async (req, res) => {
 });
 router.post('/:id/reviews', isAuth, async (req, res) => {
   const product = await Product.findById(req.params.id);
+
+  
   if (product) {
     const review = {
       name: req.body.name,
@@ -86,11 +89,12 @@ router.delete('/:id', isAuth, isAdmin, async (req, res) => {
   }
 });
 
-router.post('/', isAuth, isAdmin, async (req, res) => {
+router.post('/', isAuth, isAdmin,upload.single('image'), async (req, res) => {
+  console.log(req.body)
   const product = new Product({
     name: req.body.name,
     price: req.body.price,
-    image: req.body.image,
+    image: `/uploads` + req.body.image,
     brand: req.body.brand,
     category: req.body.category,
     countInStock: req.body.countInStock,
@@ -100,6 +104,7 @@ router.post('/', isAuth, isAdmin, async (req, res) => {
   });
   const newProduct = await product.save();
   if (newProduct) {
+    console.log(newProduct)
     return res
       .status(201)
       .send({ message: 'New Product Created', data: newProduct });

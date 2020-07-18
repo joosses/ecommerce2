@@ -15,6 +15,7 @@ mongoose
     useUnifiedTopology: true,
     useCreateIndex: true,
   })
+  .then(() => console.log('DB is Online'))
   .catch((error) => console.log(error.reason));
 
 const app = express();
@@ -26,10 +27,14 @@ app.use('/api/orders', orderRoute);
 app.get('/api/config/paypal', (req, res) => {
   res.send(config.PAYPAL_CLIENT_ID);
 });
+
+// la ruta donde esta creado el destino de las imagenes 1595047120961  
+console.log(express.static(path.join(__dirname, '/../uploads')))
 app.use('/uploads', express.static(path.join(__dirname, '/../uploads')));
 app.use(express.static(path.join(__dirname, '/../frontend/build')));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
+  res.redirect('/')
+  // res.sendFile(path.join(__dirname, '../../frontend/public/index.html'));
 });
 
 app.listen(config.PORT, () => {
